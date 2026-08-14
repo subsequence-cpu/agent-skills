@@ -1,0 +1,4 @@
+interface:
+  display_name: "开发语言工程规范"
+  short_description: "按 Google 与黄山版规范实现和审查多语言工程代码"
+  default_prompt: "使用 $code-standards 按适用语言规范实现或审查这个代码库。"
