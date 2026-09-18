@@ -1,6 +1,6 @@
 # AngularJS 开发规则
 
-先读取 `core-engineering.md` 和 `javascript.md`。本规则只适用于现有 AngularJS 1.x 代码；不要在现代 Angular、React、Vue 等项目中新增 AngularJS，除非任务明确维护遗留边界。
+先读取[公共工程规则](core-engineering.md)、[JavaScript 规则](javascript.md)和[前端工程规则](frontend-engineering.md)。本文件只补充 AngularJS 1.x 的框架规则；通用前端架构、安全、性能和测试由前端工程规则处理。不要在现代 Angular、React、Vue 等项目中新增 AngularJS，除非任务明确维护遗留边界。
 
 ## 模块与文件
 

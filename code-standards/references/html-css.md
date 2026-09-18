@@ -1,6 +1,6 @@
 # HTML/CSS/Sass 开发规则
 
-先读取 `core-engineering.md`。以项目 formatter、Stylelint、HTML validator、框架模板语法和 Google HTML/CSS Style Guide 为准。
+先读取[公共工程规则](core-engineering.md)和[前端工程规则](frontend-engineering.md)。本文件只处理 HTML、CSS 与 Sass 的语义和样式规则；组件架构、状态、浏览器安全、性能和前端测试由前端工程规则处理。以项目 formatter、Stylelint、HTML validator、框架模板语法和 Google HTML/CSS Style Guide 为准。
 
 ## 通用格式与元信息
 

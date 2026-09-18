@@ -1,6 +1,6 @@
 # TypeScript 开发规则
 
-先读取 `core-engineering.md`。以 `tsconfig.json`、ESLint、Prettier、构建工具和 Google TypeScript Style Guide 为准；同时应用与类型不冲突的 JavaScript 运行时规则。
+先读取[公共工程规则](core-engineering.md)。以 `tsconfig.json`、ESLint、Prettier、构建工具和 Google TypeScript Style Guide 为准；同时应用与类型不冲突的 JavaScript 运行时规则。浏览器任务另读[前端工程规则](frontend-engineering.md)，服务端任务另读[后端工程规则](backend-engineering.md)。
 
 ## 文件、模块与格式
 
@@ -49,13 +49,13 @@
 - 倾向组合和纯函数；class 仅用于状态、身份、框架或多态的真实需求。
 - getter 应低成本、无意外 I/O；可能失败或异步的行为使用方法。
 
-## 边界、安全与测试
+## 运行时边界与测试
 
 - TypeScript 类型在运行时不存在；HTTP、JSON、环境变量、storage 和第三方数据必须运行时验证。
 - JSON 解析结果先视为 unknown；禁止仅靠 assertion 信任外部 shape。
-- DOM、SQL、命令、URL 等输出执行上下文匹配的编码和 allowlist。
+- DOM、SQL、命令、URL 等宿主边界按对应前端或后端工程规则处理编码、授权和资源限制。
 - library 公共类型避免泄露私有依赖实现；检查 declaration emit、API Extractor 或项目兼容工具。
 - 测试运行时行为，也通过项目工具测试关键类型推断和 `@ts-expect-error`；禁止无原因 `@ts-ignore`。
-- 运行 formatter、ESLint、`tsc --noEmit`、unit/integration tests 和构建；依赖升级检查类型版本、module resolution 和产物大小。
+- 运行 formatter、ESLint、`tsc --noEmit` 和语言层测试；集成、构建、依赖与产物验证按所属工程规则执行。
 
 来源：<https://google.github.io/styleguide/tsguide.html>

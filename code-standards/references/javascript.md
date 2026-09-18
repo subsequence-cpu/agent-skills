@@ -1,6 +1,6 @@
 # JavaScript 开发规则
 
-先读取 `core-engineering.md`。Google JavaScript Style Guide 已停止更新并建议迁移 TypeScript；维护现有 JavaScript 时仍按本规则与仓库 ESLint/Prettier、运行时和模块系统执行，不因风格任务擅自迁移语言。
+先读取[公共工程规则](core-engineering.md)。Google JavaScript Style Guide 已停止更新并建议迁移 TypeScript；维护现有 JavaScript 时仍按本规则与仓库 ESLint/Prettier、运行时和模块系统执行，不因风格任务擅自迁移语言。浏览器任务另读[前端工程规则](frontend-engineering.md)，服务端任务另读[后端工程规则](backend-engineering.md)。
 
 ## 文件、模块与依赖
 
@@ -46,15 +46,13 @@
 - catch 只处理能增加价值的错误；保留 cause 和上下文，不记录后又重复抛到上层记录。
 - 抛出 `Error` 或合适子类，不抛字符串、数字或普通对象。
 - 事件监听、timer、stream、AbortController 和订阅必须有明确清理与取消生命周期。
-- fetch/远程调用设置 timeout/abort、状态检查、载荷上限和安全解析。
 
-## 安全、文档与测试
+## 文档、运行时边界与测试
 
-- DOM 输出使用 text API 或框架转义，不将不可信字符串交给 `innerHTML`、URL、CSS 或 script context。
 - 避免 prototype pollution：验证外部 object key，不把不可信对象直接 merge 到配置或原型对象。
-- token、cookie、个人数据不得输出日志或拼入 URL；浏览器存储不作为可信授权边界。
+- 对网络、DOM、文件、进程或数据库等宿主边界，按对应前端或后端工程规则处理超时、验证、编码和资源限制。
 - JSDoc 用于公共 API、复杂类型和非显然契约；TypeScript 可表达的项目不建立第二套矛盾类型系统。
-- 测试覆盖异步失败、取消、事件清理、模块状态、时区、浮点和序列化。
-- 运行 formatter、ESLint、测试和 bundler/build；浏览器代码按支持矩阵验证兼容与 bundle 影响。
+- 测试覆盖异步失败、取消、事件清理、模块状态、时区、浮点和序列化；端到端行为按所属工程规则验证。
+- 运行 formatter、ESLint 和测试；构建、bundle、浏览器兼容或服务运行验证按所属工程规则执行。
 
 来源：<https://google.github.io/styleguide/jsguide.html>

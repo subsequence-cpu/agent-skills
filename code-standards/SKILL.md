@@ -1,15 +1,17 @@
 ---
 name: code-standards
-description: 基于 Google 官方代码风格指南执行实用的开发语言与工程规范，并使用《阿里巴巴 Java 开发手册（黄山版）》扩展 Java 工程规则。编写、修改、重构、调试或审查源代码时使用；新增 API、测试、依赖、数据库访问、并发、日志或安全敏感行为时使用；检查 Java、C++、C#、Go、Objective-C、Swift、Kotlin、Dart、Python、Shell、R、Common Lisp、Vim script、JavaScript、TypeScript、HTML/CSS、JSON、XML、Markdown 或 AngularJS 的命名、格式、惯用写法和可维护性时使用。
+description: 为代码实现与审查提供多语言、前端和后端工程规范，并优先遵循仓库中的自动化工具与配置。
 ---
 
-# 开发语言工程规范
+# 多语言与前后端工程规范
 
-优先执行仓库中可自动验证的规范，再应用本 Skill 对应的语言规则。将修改限制在任务范围内，同时验证行为正确性与代码风格。
+优先执行仓库中可自动验证的规范，再按任务加载语言、数据格式和工程职责规则。将修改限制在任务范围内，同时验证行为正确性与代码风格。
 
 ## 加载适用规则
 
-始终阅读 [references/core-engineering.md](references/core-engineering.md)，然后仅加载与当前文件或行为相关的逐语言规则：
+始终阅读 [references/core-engineering.md](references/core-engineering.md)。然后仅加载与当前文件和行为相关的规则。
+
+### 编程语言
 
 - Java：读取 [references/java.md](references/java.md)
 - C++：读取 [references/cpp.md](references/cpp.md)
@@ -26,14 +28,23 @@ description: 基于 Google 官方代码风格指南执行实用的开发语言�
 - Vim script：读取 [references/vim-script.md](references/vim-script.md)
 - JavaScript：读取 [references/javascript.md](references/javascript.md)
 - TypeScript：读取 [references/typescript.md](references/typescript.md)
+
+### 标记、样式与数据格式
+
 - HTML/CSS/Sass：读取 [references/html-css.md](references/html-css.md)
 - JSON/JSONC：读取 [references/json.md](references/json.md)
 - XML：读取 [references/xml.md](references/xml.md)
 - Markdown：读取 [references/markdown.md](references/markdown.md)
-- AngularJS：同时读取 [references/angularjs.md](references/angularjs.md) 和 [references/javascript.md](references/javascript.md)
-- 需要核对来源、处理未支持语言或确认规范是否更新：读取 [references/sources.md](references/sources.md)
 
-涉及多种语言时，加载所有相关规则，不要加载无关内容。
+### 框架与工程职责
+
+- AngularJS 1.x：同时读取 [references/angularjs.md](references/angularjs.md)、[references/javascript.md](references/javascript.md) 和 [references/frontend-engineering.md](references/frontend-engineering.md)。
+- 浏览器 UI、组件、路由、前端状态、数据获取、资源构建、可访问性或 Web 性能：读取 [references/frontend-engineering.md](references/frontend-engineering.md)。
+- 服务端 API、认证授权、持久化、事务、缓存、消息、后台任务、外部集成或可观测性：读取 [references/backend-engineering.md](references/backend-engineering.md)。
+- 全栈任务：同时读取前端和后端工程规则，但各自只应用于所属边界。
+- 需要核对来源、处理未支持语言或确认规范是否更新：读取 [references/sources.md](references/sources.md)。
+
+根据代码职责而不是语言判断前后端。TypeScript 可用于服务端，Java、Kotlin 或 Dart 也不必然是后端。涉及多种语言或格式时，加载所有相关规则，不加载无关内容。
 
 ## 执行流程
 
@@ -43,7 +54,7 @@ description: 基于 Google 官方代码风格指南执行实用的开发语言�
    1. 用户明确要求和仓库指令；
    2. 格式化器、静态检查器、编译器和 CI 配置；
    3. 不影响正确性或安全性的现有局部约定；
-   4. 本 Skill 中对应的语言规则。
+   4. 本 Skill 中对应的语言和工程规则。
 4. 实现最小且完整的改动，不要顺带格式化或现代化无关文件。
 5. 除非任务明确要求改变，否则保持行为和兼容性；为改变的行为新增或更新测试。
 6. 依次运行范围最小且相关的格式化、静态检查、测试和构建命令，并根据风险扩大验证范围。
@@ -55,8 +66,4 @@ description: 基于 Google 官方代码风格指南执行实用的开发语言�
 - 优先依赖自动格式化和静态检查规则，不做主观的手工风格调整。
 - 审查代码时提供可执行的发现和文件、行号位置；不要为了满足清单而编造问题。
 - 若代码库明确采用另一套成熟规范，遵循该规范，仅在兼容处应用本 Skill。
-- 对未支持语言，遵循仓库工具和该语言当前的一手官方指南，并使用公共工程规则约束跨语言问题。
-
-## 处理 Java 格式重叠
-
-Java 始终以仓库工具为最高优先级。新项目未声明格式规范时，采用 Google Java 默认格式，包括两空格块缩进和 100 列限制；并使用黄山版衍生规则处理类型、金额、时间、集合、并发、异常、日志、安全、API、测试、MySQL、ORM、依赖和分层设计。
+- 对未支持语言，遵循仓库工具和该语言维护方发布的现行官方规范，并使用公共工程规则约束跨语言问题。
